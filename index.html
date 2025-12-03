@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CDrone - CARLA Drone: Monocular 3D Object Detection from a Different Perspective">
+  <meta name="keywords" content="Carla, Drone, CDrone, Monocular, 3D, Object Detection">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CDrone - CARLA Drone: Monocular 3D Object Detection from a Different Perspective</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+        .text_container {
+            display: flex;
+            align-items: center; /* Vertically center items */
+        }
+        .text_container a img {
+            margin-left: 5px; /* Optional: Space between image and text */
+        }
+  </style>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">LeAD-M3D: Leveraging Asymmetric Distillation for Real-time Monocular 3D Detection</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://cvg.cit.tum.de/members/mejo">Johannes Meier</a><sup>1,2,3,4</sup>&nbsp;&nbsp;&nbsp;</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/jonathan-michel-211452180/">Jonathan Michel</a><sup>3</sup></span>&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://ussaema.github.io/">Oussema Dhaouadi</a><sup>1,3,4</sup>
+            </span><br>
+            <span class="author-block">
+              <a href="https://royyang0714.github.io/">Yung-Hsu Yang</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://christophreich1996.github.io/">Christoph Reich</a><sup>3,4,5</sup>&nbsp;&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://zuriabauer.com/">Zuria Bauer</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=0yDoR0AAAAAJ&hl=de">Stefan Roth</a><sup>5</sup>&nbsp;&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=YYH0BjEAAAAJ&hl=de">Marc Pollefeys</a><sup>2,6</sup>&nbsp;&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/jacqueskaiser/"">Jacques Kaiser</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=cXQciMEAAAAJ&hl=en">Daniel Cremers</a><sup>3,4</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> DeepScenario</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup> ETH Zurich</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>3</sup> TU Munich</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>4</sup> MCML</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>5</sup> TU Darmstadt</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>6</sup> Microsoft Research</span>
+          </div>
+<!-- 
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://www.arxiv.org/pdf/2408.11958"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+            </div> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <img src="./static/images/teaser.png"
+             class="interpolation-image"
+             alt="Views (Waymo, Rope3D, CDrone) in comparison."/>
+      </div>
+      <div class="content has-text-justified">
+        <p>
+          <strong>Runtime vs Accuracy</strong> on the KITTI test set, using AP<sub>3D|R40</sub> Mod (IoU=0.7, &uarr;) and runtime (in ms, &darr;).
+          We provide different model variants (N to X) to balance runtime and accuracy.
+          Our method offers a Pareto frontier over existing approaches. Our most accurate model outperforms the recent most accurate approach MonoDiff, while being 3.6&times; faster.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Real-time monocular 3D object detection remains challenging due to severe depth ambiguity, viewpoint shifts, and the high computational cost of 3D reasoning. Existing approaches either rely on LiDAR or geometric priors to compensate for missing depth, or sacrifice efficiency to achieve competitive accuracy.
+          <p>
+            We introduce <strong>LeAD-M3D</strong>, a monocular 3D detector that achieves state-of-the-art accuracy and real-time inference without extra modalities.
+            Our method is powered by three key components.
+            <strong>Asymmetric Augmentation Denoising Distillation (A2D2)</strong> transfers geometric knowledge from a clean-image teacher to a mixup-noised student via a quality- and importance-weighted depth-feature loss, enabling stronger depth reasoning without LiDAR supervision.
+            <strong>3D-aware Consistent Matching (CM<sub>3D</sub>)</strong> improves prediction-to-ground truth assignment by integrating 3D MGIoU into the matching score, yielding more stable and precise supervision.
+            Finally, <strong>Confidence-Gated 3D Inference (CGI<sub>3D</sub>)</strong> accelerates detection by restricting expensive 3D regression to top-confidence regions.
+          </p>
+          <p>
+            Together, these components set <strong>a new Pareto frontier for monocular 3D detection</strong>: LeAD-M3D achieves state-of-the-art accuracy on KITTI and Waymo, and the best reported car AP on Rope3D, while running up to 3.6&times; faster than prior high-accuracy methods.
+            Our results demonstrate that high fidelity and real-time efficiency in monocular 3D detection are simultaneously attainable—without LiDAR, stereo, or geometric assumptions.</p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Method</h2>
+    <div class="content has-text-justified">
+      <img src="./static/images/method/a2d2.png"
+            class="interpolation-image" style="border-radius: 10px; overflow: hidden;"
+            alt="CDrone sample image" height="300"/>
+      <p>
+        <strong>Asymmetric Augmentation Denoising Distillation (A2D2)</strong> is a novel, LiDAR-free knowledge distillation scheme that transfers robust geometric understanding 
+        from a strong teacher model to a compact student model. 
+        It creates an information asymmetry by feeding <strong>clean images</strong> to the teacher model while giving the smaller student a <strong>mixup-augmented</strong> image. 
+        This forces the student to learn a feature <strong>denoising</strong> task, guided by the teacher's precise object-level depth features. 
+        The distillation is further enhanced by a novel feature loss that is dynamically weighted by the teacher's prediction quality and 
+        the feature's importance, ensuring the student focuses on the most reliable and informative cues. 
+        This process strengthens depth reasoning without needing privileged depth information.<br><br><br>
+      </p>
+    </div>
+    <div class="content has-text-justified">
+      <center><img src="./static/images/method/cm3d.png"
+            class="interpolation-image" style="border-radius: 10px; overflow: hidden;"
+            alt="CDrone sample image" width="700"/></center>
+      <p><br>
+        <strong>3D-aware Consistent Matching (CM<sub>3D</sub>)</strong> significantly improves the crucial task of assigning model predictions to ground truth objects during training. 
+        It enhances the matching score by explicitly integrating a 3D bounding box overlap term. Specifically, the <strong>3D Marginalized Generalized IoU (MGIoU)</strong>. 
+        This joint 2D and 3D alignment criterion yields more stable and precise supervision, particularly in crowded scenes or during complex data augmentation like mixup. 
+        By directly incorporating 3D geometric quality into the assignment, CM<sub>3D</sub> enables the model to learn better object localization in 3D space.<br><br><br>
+      </p>
+    </div>
+    <div class="content has-text-justified">
+      <center><img src="./static/images/method/cgi3d.png"
+            class="interpolation-image" style="border-radius: 10px; overflow: hidden;"
+            alt="CDrone sample image" width="700"/></center>
+      <p><br>
+        <strong>Confidence-Gated 3D Inference (CGI<sub>3D</sub>)</strong> is a lightweight inference strategy designed to drastically accelerate detection without sacrificing accuracy.
+        The method first runs the lightweight classification head across the entire feature map to quickly identify regions with high object confidence. 
+        It then restricts the computationally <strong>expensive 3D regression head</strong> to only these top-confidence regions, processing them as small local patches. 
+        This process reduces redundant computation across background areas and effectively cuts head-level FLOPs.
+        </p>
+    </div>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Quantitative Results</h2>
+    <div class="content has-text-justified">
+      <img src="./static/images/results/kitti_lightweight.png"
+            class="interpolation-image" style="border-radius: 10px; overflow: hidden;"
+            alt="CDrone sample image" height="300"/>
+      <p>
+        <b>Comparison with lightweight M3D methods (< 30M parameters) on the KITTI test set for the car category.</b>
+        <i><b>Extra</b></i> highlights methods that utilize auxiliary data during training to improve accuracy. 
+        <i><b>Params</b></i>: Million model parameters. 
+        <i><b>GFLOPs</b></i>: Giga FLOPs per image during inference time. 
+        <i><b>Time</b></i>: For a fair comparison, inference time is shown in ms for batch size 1 without TensorRT (hardware: NVIDIA RTX 8000).
+      </p>
+    </div>
+
+    <div class="content has-text-justified">
+      <img src="./static/images/results/kitti_sota_waymo.png"
+            class="interpolation-image" style="border-radius: 10px; overflow: hidden;"
+            alt="CDrone sample image" height="300"/>
+      <p>
+        <b><span style="color: #3333F9;">Left: </span> Comparison with SOTA monocular methods on the KITTI test set for the car category.</b>
+        <i><b>Extra</b></i> highlights methods that utilize auxiliary data during training to improve accuracy.
+
+        <b><span style="color: #3333F9;">Right: </span> Comparison with SOTA monocular methods on the Waymo validation set for the vehicle category.</b>
+        We compare with methods that use the same training and validation set as in DEVIANT.
+      </p>
+    </div>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+  <h2 class="title is-3">Qualitative Results</h2>
+
+  <div class="hero-body">
+    <div class="container">
+      <video width="100%" height="auto" controls muted loop playsinline style="border-radius: 12px;">
+          <source src="https://storage.deepscenario.com/public.php/dav/files/r4n435mBJNy7JMk" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+    <div class="content has-text-justified">
+      <p>
+        <b>Qualitative results on the KITTI dataset.</b>
+        KITTI considers objects with high occlusion or truncation levels or with a 2D height below 25 pixels as background.        
+        <b><span style="color: #3333F9;">Top:</span></b> Bird's eye view representation showing 
+        <span style="background-color: #66cdaa; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> Ground Truth, <br>   
+        <span style="background-color: #FFCA3A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> LeAD-M3D (Ours) and
+        <span style="background-color: #FF555A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> YOLOv10-3D (Baseline)  
+
+        <b><span style="color: #3333F9;">Bottom:</span></b>  Predictions of LeAD-M3D (Ours).
+      </p>
+    </div>
+
+    </div>
+  </div>
+
+
+  <div class="hero-body">
+    <div class="container">
+      <video width="100%" height="auto" controls muted loop playsinline style="border-radius: 12px;">
+          <source src="https://storage.deepscenario.com/public.php/dav/files/AX3E3Ceyq5jnr5k/" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+    <div class="content has-text-justified">
+      <p>
+        <b>Qualitative results on the Waymo dataset.</b>
+        The Waymo training dataset considers vehicles with less than 100 LiDAR points or whose projected 3D center is outside the image as background (DEVIANT style).
+        
+        <b><span style="color: #3333F9;">Top:</span></b> Bird's eye view representation showing 
+        <span style="background-color: #66cdaa; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> Ground Truth, <br>   
+        <span style="background-color: #FFCA3A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> LeAD-M3D (Ours) and
+        <span style="background-color: #FF555A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> YOLOv10-3D (Baseline)  
+
+        <b><span style="color: #3333F9;">Bottom:</span></b>  Predictions of LeAD-M3D (Ours).
+      </p>
+    </div>
+
+    </div>
+  </div>
+
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <img src="static/images/qual_results/rope3d_1.png"
+             class="interpolation-image"
+             alt="CDrone sample image" height="300"/>
+        </div>
+        <div class="item item-chair-tp">
+          <img src="static/images/qual_results/rope3d_2.png"
+             class="interpolation-image"
+             alt="CDrone sample image" height="300"/>
+        </div>
+        <div class="item item-chair-tp">
+          <img src="static/images/qual_results/rope3d_3.png"
+             class="interpolation-image"
+             alt="CDrone sample image" height="300"/>
+        </div>
+        <div class="item item-chair-tp">
+          <img src="static/images/qual_results/rope3d_4.png"
+             class="interpolation-image"
+             alt="CDrone sample image" height="300"/>
+        </div>
+      </div>
+    <div class="content has-text-justified">
+      <p>
+        <b>Qualitiative results on the Rope3D dataset.</b>
+        
+        <b><span style="color: #3333F9;">Top:</span></b> Bird's eye view representation showing 
+        <span style="background-color: #66cdaa; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> Ground Truth, <br>   
+        <span style="background-color: #FFCA3A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> LeAD-M3D (Ours) and
+        <span style="background-color: #FF555A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> YOLOv10-3D (Baseline)  
+
+        <b><span style="color: #3333F9;">Bottom:</span></b>  Predictions of LeAD-M3D (Ours).
+      </p>
+    </div>
+    </div>
+  </div>
+  </div>
+  </section>
+
+<section class="section" id="references">
+    <div class="container is-max-desktop content">
+        <h2  class="title is-3">References</h2>        
+        <ul style="list-style-type: disc;">
+            <li style="margin-bottom: 15px;">
+              <strong>Are we ready for autonomous driving? the KITTI vision benchmark suite.</strong>
+                Andreas Geiger, Philip Lenz, and Raquel Urtasun. CVPR, 2012.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>Scalability in perception for autonomous driving: Waymo Open Dataset</strong><br>
+                Pei Sun, Henrik Kretzschmar, Xerxes Dotiwalla, Aurelien Chouard, Vijaysai Patnaik, Paul Tsui, James Guo, Yin Zhou, Yuning Chai, Benjamin Caine, Vijay Vasudevan, Wei Han, Jiquan Ngiam, Hang Zhao, Aleksei Timofeev, Scott Ettinger, Maxim Krivokon, Amy Gao, Aditya Joshi, Yu Zhang, Jonathon Shlens, Zhifeng Chen, and Dragomir Anguelov. CVPR 2020.
+            </li>
+            <li style="margin-bottom: 15px;">
+                <strong>The roadside perception dataset for autonomous driving and monocular 3D object detection task.</strong><br>
+                Xiaoqing Ye, Mao Shu, Hanyu Li, Yifeng Shi, Yingying Li, Guangjie Wang, Xiao Tan, and Errui Ding. CVPR, 2022.
+            </li>
+            </ul>
+            </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{meier2025lead-m3d,
+  author    = {Meier, Johannes and Michel, Jonathan and Dhaouadi, Oussema and Yang, Yung-Hsu and Reich, Christoph and Bauer, Zuria and Roth, Stefan and Pollefeys, Marc and Kaiser, Jacques and Cremres, Daniel},
+  title     = {{LeAD-M3D:} Leveraging Asymmetric Distillation for Real-time Monocular 3D Detection},
+  journal   = {arXiv},
+  year      = {2025},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer" style="padding-top: 10px; padding-bottom: 10px;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content" style="font-size: 0.65em; margin-bottom: 0;">
+          <p style="margin-bottom: 0;">
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p style="margin-bottom: 0;">
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
