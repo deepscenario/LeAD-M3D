@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="CDrone - CARLA Drone: Monocular 3D Object Detection from a Different Perspective">
-  <meta name="keywords" content="Carla, Drone, CDrone, Monocular, 3D, Object Detection">
+        content="LeAD-M3D: Leveraging Asymmetric Distillation for Real-time Monocular 3D Detection
+">
+  <meta name="keywords" content="LeAD-M3D, A2D2, CM3D, CGI3D, Monocular, 3D, Object Detection, real-time, run-time, pareto frontier, TU Munich, ETH, DeepScenario, MCML, Microsoft Research, Daniel Cremers, Marc Pollefeys, Stefan Roth">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CDrone - CARLA Drone: Monocular 3D Object Detection from a Different Perspective</title>
+  <title>LeAD-M3D: Leveraging Asymmetric Distillation for Real-time Monocular 3D Detection</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
+  <link rel="icon" href="./static/images/logo.ico">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -44,7 +46,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
 
-          <h1 class="title is-1 publication-title">LeAD-M3D: Leveraging Asymmetric Distillation for Real-time Monocular 3D Detection</h1>
+          <h1 class="title is-1 publication-title"><img src="static/images/logo.png" alt="LeAD-M3D Logo" class="title-logo" width="166px"><br>LeAD-M3D: <br>Leveraging Asymmetric Distillation for <br>Real-time Monocular 3D Detection</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://cvg.cit.tum.de/members/mejo">Johannes Meier</a><sup>1,2,3,4</sup>&nbsp;&nbsp;&nbsp;</span>
@@ -74,7 +76,7 @@
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=cXQciMEAAAAJ&hl=en">Daniel Cremers</a><sup>3,4</sup>
             </span>
-          </div>
+          </div><br>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup> DeepScenario</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -119,7 +121,7 @@
     <div class="hero-body">
         <img src="./static/images/teaser.png"
              class="interpolation-image"
-             alt="Views (Waymo, Rope3D, CDrone) in comparison."/>
+             alt="Runtime vs. Accuracy trade-off."/>
       </div>
       <div class="content has-text-justified">
         <p>
@@ -165,7 +167,7 @@
     <div class="content has-text-justified">
       <img src="./static/images/method/a2d2.png"
             class="interpolation-image" style="border-radius: 10px; overflow: hidden;"
-            alt="CDrone sample image" height="300"/>
+            alt="LeAD-M3D Asymmetric Augmentation Denoising Distillation (A2D2)" height="300"/>
       <p>
         <strong>Asymmetric Augmentation Denoising Distillation (A2D2)</strong> is a novel, LiDAR-free knowledge distillation scheme that transfers robust geometric understanding 
         from a strong teacher model to a compact student model. 
@@ -179,7 +181,7 @@
     <div class="content has-text-justified">
       <center><img src="./static/images/method/cm3d.png"
             class="interpolation-image" style="border-radius: 10px; overflow: hidden;"
-            alt="CDrone sample image" width="700"/></center>
+            alt="LeAD-M3D 3D-aware Consistent Matching (CM3D)" width="700"/></center>
       <p><br>
         <strong>3D-aware Consistent Matching (CM<sub>3D</sub>)</strong> significantly improves the crucial task of assigning model predictions to ground truth objects during training. 
         It enhances the matching score by explicitly integrating a 3D bounding box overlap term. Specifically, the <strong>3D Marginalized Generalized IoU (MGIoU)</strong>. 
@@ -190,7 +192,7 @@
     <div class="content has-text-justified">
       <center><img src="./static/images/method/cgi3d.png"
             class="interpolation-image" style="border-radius: 10px; overflow: hidden;"
-            alt="CDrone sample image" width="700"/></center>
+            alt="LeAD-M3D Confidence-Gated 3D Inference (CGI3D)" width="700"/></center>
       <p><br>
         <strong>Confidence-Gated 3D Inference (CGI<sub>3D</sub>)</strong> is a lightweight inference strategy designed to drastically accelerate detection without sacrificing accuracy.
         The method first runs the lightweight classification head across the entire feature map to quickly identify regions with high object confidence. 
@@ -210,7 +212,7 @@
     <div class="content has-text-justified">
       <img src="./static/images/results/kitti_lightweight.png"
             class="interpolation-image" style="border-radius: 10px; overflow: hidden;"
-            alt="CDrone sample image" height="300"/>
+            alt="LeAD-M3D lightweight comparison" height="300"/>
       <p>
         <b>Comparison with lightweight M3D methods (< 30M parameters) on the KITTI test set for the car category.</b>
         <i><b>Extra</b></i> highlights methods that utilize auxiliary data during training to improve accuracy. 
@@ -223,7 +225,7 @@
     <div class="content has-text-justified">
       <img src="./static/images/results/kitti_sota_waymo.png"
             class="interpolation-image" style="border-radius: 10px; overflow: hidden;"
-            alt="CDrone sample image" height="300"/>
+            alt="LeAD-M3D SOTA comparison" height="300"/>
       <p>
         <b><span style="color: #3333F9;">Left: </span> Comparison with SOTA monocular methods on the KITTI test set for the car category.</b>
         <i><b>Extra</b></i> highlights methods that utilize auxiliary data during training to improve accuracy.
@@ -241,7 +243,7 @@
   <div class="hero-body">
     <div class="container">
       <video width="100%" height="auto" controls muted loop playsinline style="border-radius: 12px;">
-          <source src="https://storage.deepscenario.com/public.php/dav/files/r4n435mBJNy7JMk" type="video/mp4">
+          <source src="https://storage.deepscenario.com/public.php/dav/files/8cRD2BeFkoNtXkM/" type="video/mp4">
           Your browser does not support the video tag.
       </video>
     <div class="content has-text-justified">
@@ -264,7 +266,7 @@
   <div class="hero-body">
     <div class="container">
       <video width="100%" height="auto" controls muted loop playsinline style="border-radius: 12px;">
-          <source src="https://storage.deepscenario.com/public.php/dav/files/AX3E3Ceyq5jnr5k/" type="video/mp4">
+          <source src="https://storage.deepscenario.com/public.php/dav/files/ERx5LRxMbyFPtJK" type="video/mp4">
           Your browser does not support the video tag.
       </video>
     <div class="content has-text-justified">
@@ -290,22 +292,22 @@
         <div class="item item-steve">
           <img src="static/images/qual_results/rope3d_1.png"
              class="interpolation-image"
-             alt="CDrone sample image" height="300"/>
+             alt="Rope3D qualitative result" height="300"/>
         </div>
         <div class="item item-chair-tp">
           <img src="static/images/qual_results/rope3d_2.png"
              class="interpolation-image"
-             alt="CDrone sample image" height="300"/>
+             alt="Rope3D qualitative result" height="300"/>
         </div>
         <div class="item item-chair-tp">
           <img src="static/images/qual_results/rope3d_3.png"
              class="interpolation-image"
-             alt="CDrone sample image" height="300"/>
+             alt="Rope3D qualitative result" height="300"/>
         </div>
         <div class="item item-chair-tp">
           <img src="static/images/qual_results/rope3d_4.png"
              class="interpolation-image"
-             alt="CDrone sample image" height="300"/>
+             alt="Rope3D qualitative result" height="300"/>
         </div>
       </div>
     <div class="content has-text-justified">
