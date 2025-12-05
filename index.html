@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="LeAD-M3D: Leveraging Asymmetric Distillation for Real-time Monocular 3D Detection
-">
+        content="LeAD-M3D: Leveraging Asymmetric Distillation for Real-time Monocular 3D Detection">
   <meta name="keywords" content="LeAD-M3D, A2D2, CM3D, CGI3D, Monocular, 3D, Object Detection, real-time, run-time, pareto frontier, TU Munich, ETH, DeepScenario, MCML, Microsoft Research, Daniel Cremers, Marc Pollefeys, Stefan Roth">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LeAD-M3D: Leveraging Asymmetric Distillation for Real-time Monocular 3D Detection</title>
@@ -46,7 +45,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
 
-          <h1 class="title is-1 publication-title"><img src="static/images/logo.png" alt="LeAD-M3D Logo" class="title-logo" width="166px"><br>LeAD-M3D: <br>Leveraging Asymmetric Distillation for <br>Real-time Monocular 3D Detection</h1>
+          <h1 class="title is-1 publication-title">LeAD-M3D: <br>Leveraging Asymmetric Distillation for <br>Real-time Monocular 3D Detection</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://cvg.cit.tum.de/members/mejo">Johannes Meier</a><sup>1,2,3,4</sup>&nbsp;&nbsp;&nbsp;</span>
@@ -54,7 +53,7 @@
               <a href="https://www.linkedin.com/in/jonathan-michel-211452180/">Jonathan Michel</a><sup>3</sup></span>&nbsp;&nbsp;&nbsp;
             <span class="author-block">
               <a href="https://ussaema.github.io/">Oussema Dhaouadi</a><sup>1,3,4</sup>
-            </span><br>
+            </span>
             <span class="author-block">
               <a href="https://royyang0714.github.io/">Yung-Hsu Yang</a><sup>2</sup>&nbsp;&nbsp;&nbsp;
             </span>
@@ -199,8 +198,7 @@
         It then restricts the computationally <strong>expensive 3D regression head</strong> to only these top-confidence regions, processing them as small local patches. 
         This process reduces redundant computation across background areas and effectively cuts head-level FLOPs.
         </p>
-    </div>
-      </p>
+      </div>
     </div>
   </div>
 </section>
@@ -215,7 +213,7 @@
             alt="LeAD-M3D lightweight comparison" height="300"/>
       <p>
         <b>Comparison with lightweight M3D methods (< 30M parameters) on the KITTI test set for the car category.</b>
-        <i><b>Extra</b></i> highlights methods that utilize auxiliary data during training to improve accuracy. 
+        <i><b>Extra</b></i>: highlights methods that utilize auxiliary data during training to improve accuracy. 
         <i><b>Params</b></i>: Million model parameters. 
         <i><b>GFLOPs</b></i>: Giga FLOPs per image during inference time. 
         <i><b>Time</b></i>: For a fair comparison, inference time is shown in ms for batch size 1 without TensorRT (hardware: NVIDIA RTX 8000).
@@ -234,6 +232,8 @@
         We compare with methods that use the same training and validation set as in DEVIANT.
       </p>
     </div>
+  </div>
+</section>
 
 
 <section class="section">
@@ -248,14 +248,8 @@
       </video>
     <div class="content has-text-justified">
       <p>
-        <b>Qualitative results on the KITTI dataset.</b>
+        <b>Qualitative results of LeAD-M3D X on the KITTI dataset.</b>
         KITTI considers objects with high occlusion or truncation levels or with a 2D height below 25 pixels as background.        
-        <b><span style="color: #3333F9;">Top:</span></b> Bird's eye view representation showing 
-        <span style="background-color: #66cdaa; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> Ground Truth, <br>   
-        <span style="background-color: #FFCA3A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> LeAD-M3D (Ours) and
-        <span style="background-color: #FF555A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> YOLOv10-3D (Baseline)  
-
-        <b><span style="color: #3333F9;">Bottom:</span></b>  Predictions of LeAD-M3D (Ours).
       </p>
     </div>
 
@@ -271,15 +265,8 @@
       </video>
     <div class="content has-text-justified">
       <p>
-        <b>Qualitative results on the Waymo dataset.</b>
-        The Waymo training dataset considers vehicles with less than 100 LiDAR points or whose projected 3D center is outside the image as background (DEVIANT style).
-        
-        <b><span style="color: #3333F9;">Top:</span></b> Bird's eye view representation showing 
-        <span style="background-color: #66cdaa; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> Ground Truth,    
-        <span style="background-color: #FFCA3A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> LeAD-M3D (Ours) and
-        <span style="background-color: #FF555A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> YOLOv10-3D (Baseline)  
-
-        <b><span style="color: #3333F9;">Bottom:</span></b>  Predictions of LeAD-M3D (Ours).
+        <b>Qualitative results of LeAD-M3D X on the Waymo validation dataset.</b>
+        Waymo considers vehicles with less than 100 LiDAR points or whose projected 3D center is outside the image as background (DEVIANT style).        
       </p>
     </div>
 
@@ -310,38 +297,36 @@
              alt="Rope3D qualitative result" height="300"/>
         </div>
       </div>
+      </div> 
+    </div>
     <div class="content has-text-justified">
       <p>
         <b>Qualitiative results on the Rope3D dataset.</b>
         
         <b><span style="color: #3333F9;">Top:</span></b> Bird's eye view representation showing 
         <span style="background-color: #66cdaa; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> Ground Truth, <br>   
-        <span style="background-color: #FFCA3A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> LeAD-M3D (Ours) and
-        <span style="background-color: #FF555A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> YOLOv10-3D (Baseline)  
+        <span style="background-color: #FFCA3A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> LeAD-M3D X (Ours) and
+        <span style="background-color: #FF555A; width: 15px; height: 15px; border-radius: 4px; display: inline-block; margin-right: 5px; margin-bottom:-1px"></span> YOLOv10-3D X (Baseline)  
 
         <b><span style="color: #3333F9;">Bottom:</span></b>  Predictions of LeAD-M3D (Ours).
       </p>
     </div>
-    </div>
   </div>
-  </div>
-  </section>
+</section>
+
 
 <section class="section" id="references">
     <div class="container is-max-desktop content">
         <h2  class="title is-3">References</h2>        
         <ul style="list-style-type: disc;">
             <li style="margin-bottom: 15px;">
-              <strong>Are we ready for autonomous driving? the KITTI vision benchmark suite.</strong>
-                Andreas Geiger, Philip Lenz, and Raquel Urtasun. CVPR, 2012.
+              Andreas Geiger, Philip Lenz, and Raquel Urtasun. Are we ready for autonomous driving? the KITTI vision benchmark suite. In CVPR, pages 3354–3361, 2012.
             </li>
             <li style="margin-bottom: 15px;">
-                <strong>Scalability in perception for autonomous driving: Waymo Open Dataset</strong><br>
-                Pei Sun, Henrik Kretzschmar, Xerxes Dotiwalla, Aurelien Chouard, Vijaysai Patnaik, Paul Tsui, James Guo, Yin Zhou, Yuning Chai, Benjamin Caine, Vijay Vasudevan, Wei Han, Jiquan Ngiam, Hang Zhao, Aleksei Timofeev, Scott Ettinger, Maxim Krivokon, Amy Gao, Aditya Joshi, Yu Zhang, Jonathon Shlens, Zhifeng Chen, and Dragomir Anguelov. CVPR 2020.
+              Pei Sun, Henrik Kretzschmar, Xerxes Dotiwalla, Aurelien Chouard, Vijaysai Patnaik, Paul Tsui, James Guo, Yin Zhou, Yuning Chai, Benjamin Caine, Vijay Vasudevan, Wei Han, et al. Scalability in perception for autonomous driving: Waymo Open Dataset. In CVPR, pages 2443–2451, 2020.
             </li>
             <li style="margin-bottom: 15px;">
-                <strong>The roadside perception dataset for autonomous driving and monocular 3D object detection task.</strong><br>
-                Xiaoqing Ye, Mao Shu, Hanyu Li, Yifeng Shi, Yingying Li, Guangjie Wang, Xiao Tan, and Errui Ding. CVPR, 2022.
+              Xiaoqing Ye, Mao Shu, Hanyu Li, Yifeng Shi, Yingying Li, Guangjie Wang, Xiao Tan, and Errui Ding. Rope3D: The roadside perception dataset for autonomous driving and monocular 3D object detection task. In CVPR, pages 21309–21318, 2022.
             </li>
             </ul>
             </div>
