@@ -48,20 +48,18 @@ $(document).ready(function() {
 
 
     // -------------------------------------------------------------------
-    // 2. IMAGE SLIDER (.results-carousel): Set to slidesToShow: 2
+    // 2. IMAGE SLIDER (.results-carousel): Show one image at a time
     // -------------------------------------------------------------------
     var imageOptions = {
-        slidesToScroll: 1, // Scroll two at a time
-        slidesToShow: 2,   // Show two at a time
+        slidesToScroll: 1,
+        slidesToShow: 1,
         loop: true,
         infinite: true,
         autoplay: false,
         autoplaySpeed: 3000,
-        // Override default breakpoints to enforce 2-up on large screens,
-        // but switch to 1-up on mobile (below 768px).
         breakpoints: [
-            { changePoint: 768, slidesToShow: 2, slidesToScroll: 1 }, // Desktop
-            { changePoint: 640, slidesToShow: 1, slidesToScroll: 1 }  // Mobile/Tablet
+            { changePoint: 768, slidesToShow: 1, slidesToScroll: 1 },
+            { changePoint: 640, slidesToShow: 1, slidesToScroll: 1 }
         ]
     };
 
